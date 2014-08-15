@@ -1,20 +1,16 @@
 package gui.text;
 
 import core.GameMap;
-import core.entity.Entity;
 import core.tile.TextBasedTile;
 import util.GameInfo;
-import util.MapParser;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Gui {
-    public Gui(String level, String fontName) throws FileNotFoundException, ClassNotFoundException {
+    public Gui(Font font, GameMap<TextBasedTile> map) throws FileNotFoundException, ClassNotFoundException {
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.BLACK);
 
@@ -46,10 +42,7 @@ public class Gui {
 
         mainPanel.add(sidebar);
 
-        List<List<TextBasedTile>> tiles = MapParser.parseFile(level);
-        GameMap<TextBasedTile> map = new GameMap<>(tiles, new ArrayList<Entity>());
-        Font f = new Font(fontName, Font.PLAIN, 16);
-        GamePanel gamePanel = new GamePanel(map, f);
+        GamePanel gamePanel = new GamePanel(font, map);
         gamePanel.setPreferredSize(new Dimension(500, 500));
 
         mainPanel.add(gamePanel);

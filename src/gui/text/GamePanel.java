@@ -7,21 +7,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    private GameMap<TextBasedTile> map;
     private Font font;
     int charWidth, charHeight;
+    private GameMap<TextBasedTile> map;
 
     /**
-     * @param map  The GameMap to draw
      * @param font Should be monospaced
+     * @param map  The GameMap to draw
      */
-    public GamePanel(GameMap<TextBasedTile> map, Font font) {
-        this.map = map;
+    public GamePanel(Font font, GameMap<TextBasedTile> map) {
         this.font = font;
-
         FontMetrics fm = this.getFontMetrics(font);
+        /*
+            W is widest character in non-monospaced fonts,
+            so this will help improve the look of the font
+            if it happens to be non-monospaced.
+        */
         this.charWidth = fm.charWidth('W');
         this.charHeight = fm.getAscent();
+
+        this.map = map;
     }
 
     @Override
