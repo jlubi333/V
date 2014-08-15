@@ -3,14 +3,15 @@ package gui.text;
 import core.GameMap;
 import core.TextBasedTile;
 import util.GameInfo;
+import util.MapParser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException {
         JPanel mainPanel = new JPanel();
 
         JPanel sidebar = new JPanel();
@@ -19,6 +20,8 @@ public class Main {
 
         GridBagConstraints logConstraints = new GridBagConstraints();
         JTextArea log = new JTextArea();
+        log.setEditable(false);
+        log.setText("Welcome to " + GameInfo.GAME_NAME + ".");
         logConstraints.gridx = 0;
         logConstraints.gridy = 0;
         logConstraints.weightx = 1.0;
@@ -36,23 +39,18 @@ public class Main {
 
         mainPanel.add(sidebar);
 
-        List<List<TextBasedTile>> tiles = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
-            tiles.add(new ArrayList<>());
-            for(int j = 0; j < 10; j++) {
-                tiles.get(i).add(new TextBasedTile("Floor", false, 'A', Color.RED));
-            }
-        }
+        List<List<TextBasedTile>> tiles = MapParser.parseFile("map.jplm");
         GameMap<TextBasedTile> map = new GameMap<>(tiles);
         Font f = new Font("Courier New", Font.PLAIN, 16);
-        GameComponent gameComponent = new GameComponent(map, f);
-        gameComponent.setPreferredSize(new Dimension(500, 500));
+        GamePanel gamePanel = new GamePanel(map, f);
+        gamePanel.setPreferredSize(new Dimension(500, 500));
 
 
-        mainPanel.add(gameComponent);
+        mainPanel.add(gamePanel);
 
         JFrame frame = new JFrame(GameInfo.GAME_NAME);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.add(mainPanel);
         frame.pack();
         frame.setVisible(true);

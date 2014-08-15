@@ -6,16 +6,16 @@ import core.TextBasedTile;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameComponent extends JComponent {
+public class GamePanel extends JPanel {
     private GameMap<TextBasedTile> map;
     private Font font;
     int charWidth, charHeight;
 
     /**
-     * @param map The GameMap to draw
+     * @param map  The GameMap to draw
      * @param font Should be monospaced
      */
-    public GameComponent(GameMap<TextBasedTile> map, Font font) {
+    public GamePanel(GameMap<TextBasedTile> map, Font font) {
         this.map = map;
         this.font = font;
 
@@ -28,11 +28,12 @@ public class GameComponent extends JComponent {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(this.font);
+        this.setBackground(Color.ORANGE);
         for (int i = 0; i < this.map.getRows(); i++) {
             for (int j = 0; j < this.map.getCols(); j++) {
                 g.drawString("" + this.map.getTile(i, j).getRepresentation(),
-                             i * charWidth,
-                             j * charHeight);
+                        (i + 1) * this.charWidth,
+                        (j + 1) * this.charHeight);
             }
         }
     }
