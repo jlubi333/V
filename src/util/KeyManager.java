@@ -22,7 +22,7 @@ public class KeyManager implements KeyListener {
         keys.put(e.getKeyCode(), false);
     }
 
-    public boolean isKeyDown(int keyCode) {
+    public static boolean isKeyDown(int keyCode) {
         return keys.containsKey(keyCode) && keys.get(keyCode);
     }
 }
