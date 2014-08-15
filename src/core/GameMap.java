@@ -1,5 +1,7 @@
 package core;
 
+import core.tile.Tile;
+
 import java.util.List;
 
 public class GameMap<T extends Tile> {

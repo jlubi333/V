@@ -1,4 +1,4 @@
-package core;
+package core.tile;
 
 public abstract class Tile {
     private String name;

@@ -1,4 +1,4 @@
-package core;
+package core.battle;
 
 public abstract class Move {
     public int power, accuracy;

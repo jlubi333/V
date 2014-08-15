@@ -1,7 +1,7 @@
 package gui.text;
 
 import core.GameMap;
-import core.TextBasedTile;
+import core.tile.TextBasedTile;
 import util.GameInfo;
 import util.MapParser;
 

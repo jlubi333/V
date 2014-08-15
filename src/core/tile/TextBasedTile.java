@@ -1,4 +1,4 @@
-package core;
+package core.tile;
 
 import java.awt.*;
 

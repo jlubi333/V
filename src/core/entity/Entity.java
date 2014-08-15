@@ -1,4 +1,9 @@
-package core;
+package core.entity;
+
+import core.GameMap;
+import core.Location;
+import core.battle.Move;
+import core.tile.Tile;
 
 import java.util.List;
 

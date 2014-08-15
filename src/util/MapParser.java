@@ -1,6 +1,6 @@
 package util;
 
-import core.Tile;
+import core.tile.Tile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class MapParser {
             for (String className : data) {
                 try {
                     @SuppressWarnings("unchecked")
-                    T tile = (T) Class.forName("core.textTile." + className).newInstance();
+                    T tile = (T) Class.forName("core.tile.textTile." + className).newInstance();
                     tiles.get(tiles.size() - 1).add(tile);
                 } catch (IllegalAccessException | InstantiationException e) {
                     e.printStackTrace();

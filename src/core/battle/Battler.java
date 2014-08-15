@@ -1,4 +1,4 @@
-package core;
+package core.battle;
 
 import java.util.List;
 

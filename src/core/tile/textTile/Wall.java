@@ -1,6 +1,6 @@
-package core.textTile;
+package core.tile.textTile;
 
-import core.TextBasedTile;
+import core.tile.TextBasedTile;
 
 import java.awt.*;
 
