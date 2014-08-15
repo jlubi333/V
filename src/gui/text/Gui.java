@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Gui {
     public Gui(String level, String fontName) throws FileNotFoundException, ClassNotFoundException {
@@ -45,7 +46,7 @@ public class Gui {
 
         mainPanel.add(sidebar);
 
-        java.util.List<java.util.List<TextBasedTile>> tiles = MapParser.parseFile(level);
+        List<List<TextBasedTile>> tiles = MapParser.parseFile(level);
         GameMap<TextBasedTile> map = new GameMap<>(tiles, new ArrayList<Entity>());
         Font f = new Font(fontName, Font.PLAIN, 16);
         GamePanel gamePanel = new GamePanel(map, f);
