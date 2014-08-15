@@ -2,24 +2,22 @@ package core;
 
 import java.awt.*;
 
-// Decouple view from logic
-// Make tile an interface
-// implement tile with TextBasedTile and maybe GraphicTile for future
-public class TextBasedTile extends Tile {
+public abstract class TextBasedTile extends Tile {
     private char representation;
-    private Color color;
+    private Color color, backgroundColor;
 
-    public TextBasedTile(String name, boolean isBlocked, char representation, Color color) {
+    protected TextBasedTile(String name, boolean isBlocked, char representation, Color color, Color backgroundColor) {
         super(name, isBlocked);
         this.representation = representation;
         this.color = color;
+        this.backgroundColor = backgroundColor;
     }
 
     public char getRepresentation() {
         return this.representation;
     }
 
-    public void setRepresentation(char representation) {
+    protected void setRepresentation(char representation) {
         this.representation = representation;
     }
 
@@ -27,7 +25,15 @@ public class TextBasedTile extends Tile {
         return this.color;
     }
 
-    public void setColor(Color color) {
+    protected void setColor(Color color) {
         this.color = color;
+    }
+
+    public Color getBackgroundColor() {
+        return this.backgroundColor;
+    }
+
+    protected void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }

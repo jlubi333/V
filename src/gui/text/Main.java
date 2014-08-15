@@ -6,6 +6,7 @@ import util.GameInfo;
 import util.MapParser;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException {
         JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(Color.BLACK);
 
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new GridBagLayout());
@@ -21,6 +23,8 @@ public class Main {
         GridBagConstraints logConstraints = new GridBagConstraints();
         JTextArea log = new JTextArea();
         log.setEditable(false);
+        log.setBackground(new Color(255, 255, 255, 100));
+        log.setBorder(new EmptyBorder(10, 10, 10, 10));
         log.setText("Welcome to " + GameInfo.GAME_NAME + ".");
         logConstraints.gridx = 0;
         logConstraints.gridy = 0;
@@ -31,6 +35,7 @@ public class Main {
 
         GridBagConstraints textInputConstraints = new GridBagConstraints();
         JTextField textInput = new JTextField();
+        textInput.setBackground(new Color(255, 255, 255, 100));
         textInputConstraints.gridx = 0;
         textInputConstraints.gridy = 1;
         textInputConstraints.weightx = 1.0;
