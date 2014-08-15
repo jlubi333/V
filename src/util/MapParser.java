@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class MapParser {
+public abstract class MapParser {
     public static <T extends Tile> List<List<T>> parseFile(String filename) throws FileNotFoundException, ClassNotFoundException {
         List<List<T>> tiles = new ArrayList<>();
         System.out.println(tiles);

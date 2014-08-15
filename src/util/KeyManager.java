@@ -25,4 +25,13 @@ public class KeyManager implements KeyListener {
     public static boolean isKeyDown(int keyCode) {
         return keys.containsKey(keyCode) && keys.get(keyCode);
     }
+
+    public static boolean popKey(int keyCode) {
+        if(isKeyDown(keyCode)) {
+            keys.put(keyCode, false);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
