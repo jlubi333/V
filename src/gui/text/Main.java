@@ -1,6 +1,7 @@
 package gui.text;
 
 import core.GameMap;
+import core.entity.Entity;
 import core.tile.TextBasedTile;
 import util.GameInfo;
 import util.MapParser;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -45,7 +47,7 @@ public class Main {
         mainPanel.add(sidebar);
 
         List<List<TextBasedTile>> tiles = MapParser.parseFile("map.jplm");
-        GameMap<TextBasedTile> map = new GameMap<>(tiles);
+        GameMap<TextBasedTile> map = new GameMap<>(tiles, new ArrayList<Entity>());
         Font f = new Font("Courier New", Font.PLAIN, 16);
         GamePanel gamePanel = new GamePanel(map, f);
         gamePanel.setPreferredSize(new Dimension(500, 500));
