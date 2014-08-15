@@ -52,7 +52,6 @@ public class Main {
         GamePanel gamePanel = new GamePanel(map, f);
         gamePanel.setPreferredSize(new Dimension(500, 500));
 
-
         mainPanel.add(gamePanel);
 
         JFrame frame = new JFrame(GameInfo.GAME_NAME);
