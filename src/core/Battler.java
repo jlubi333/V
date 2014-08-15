@@ -1,12 +1,12 @@
 package core;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Battler {
-    private ArrayList<Move> moves;
+    private List<Move> moves;
     private Stat hp, attack, defense, speed;
 
-    public Battler(ArrayList<Move> moves, Stat hp, Stat attack, Stat defense, Stat speed) {
+    public Battler(List<Move> moves, Stat hp, Stat attack, Stat defense, Stat speed) {
         this.moves = moves;
         this.hp = hp;
         this.attack = attack;
@@ -14,7 +14,7 @@ public class Battler {
         this.speed = speed;
     }
 
-    public ArrayList<Move> getMoves() {
+    public List<Move> getMoves() {
         return this.moves;
     }
 
