@@ -3,10 +3,12 @@ package core.tile;
 public abstract class Tile {
     private String name;
     private boolean isBlocked;
+    private TileDisplay tileDisplay;
 
-    protected Tile(String name, boolean isBlocked) {
+    protected Tile(String name, boolean isBlocked, TileDisplay tileDisplay) {
         this.name = name;
         this.isBlocked = isBlocked;
+        this.tileDisplay = tileDisplay;
     }
 
     public String getName() {
@@ -15,5 +17,9 @@ public abstract class Tile {
 
     public boolean isBlocked() {
         return this.isBlocked;
+    }
+
+    public TileDisplay getTileDisplay() {
+        return this.tileDisplay;
     }
 }

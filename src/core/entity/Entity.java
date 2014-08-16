@@ -5,7 +5,6 @@ import core.Location;
 import core.Updatable;
 import core.battle.Battler;
 import core.tile.Tile;
-import util.Vector2;
 
 public abstract class Entity implements Updatable {
     private String name;
@@ -14,9 +13,8 @@ public abstract class Entity implements Updatable {
     private Tile tile;
     private Battler battler;
 
-    protected Entity(String name, GameMap map, Location location, Tile tile, Battler battler) {
+    protected Entity(String name, Location location, Tile tile, Battler battler) {
         this.name = name;
-        this.map = map;
         this.location = location;
         this.tile = tile;
         this.battler = battler;
@@ -26,9 +24,49 @@ public abstract class Entity implements Updatable {
 
     }
 
-    public void move(Vector2 v) {
-        this.location.x += v.x;
-        this.location.y += v.y;
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public GameMap getMap() {
+        return this.map;
+    }
+
+    public void setMap(GameMap map) {
+        this.map = map;
+    }
+
+    public Location getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Tile getTile() {
+        return this.tile;
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
+    }
+
+    public Battler getBattler() {
+        return this.battler;
+    }
+
+    public void setBattler(Battler battler) {
+        this.battler = battler;
+    }
+
+    public void move(Location displacement) {
+        this.location.row += displacement.row;
+        this.location.col += displacement.col;
     }
 
     public void jumpTo(Location loc) {

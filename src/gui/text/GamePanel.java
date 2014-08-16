@@ -1,7 +1,9 @@
 package gui.text;
 
 import core.GameMap;
-import core.tile.TextBasedTile;
+import core.Location;
+import core.entity.Entity;
+import core.tile.TileDisplay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,13 +11,13 @@ import java.awt.*;
 public class GamePanel extends JPanel {
     private Font font;
     int charWidth, charHeight;
-    private GameMap<TextBasedTile> map;
+    private GameMap map;
 
     /**
      * @param font Should be monospaced
      * @param map  The GameMap to draw
      */
-    public GamePanel(Font font, GameMap<TextBasedTile> map) {
+    public GamePanel(Font font, GameMap map) {
         this.font = font;
         FontMetrics fm = this.getFontMetrics(font);
         /*
@@ -27,6 +29,9 @@ public class GamePanel extends JPanel {
         this.charHeight = fm.getAscent();
 
         this.map = map;
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 
     @Override
@@ -35,19 +40,26 @@ public class GamePanel extends JPanel {
         g.setFont(this.font);
         this.setBackground(Color.BLACK);
 
-        TextBasedTile t;
-        int x, y;
-        for (int i = 0; i < this.map.getRows(); i++) {
-            for (int j = 0; j < this.map.getCols(); j++) {
-                t = this.map.getTile(i, j);
-                x = i * this.charWidth;
-                y = j * this.charHeight;
-
-                g.setColor(t.getBackgroundColor());
-                g.fillRect(x, y, this.charWidth, this.charHeight);
-                g.setColor(t.getColor());
-                g.drawString("" + t.getRepresentation(), x, y + this.charHeight);
+        TileDisplay t;
+        for (int r = 0; r < this.map.getRows(); r++) {
+            for (int c = 0; c < this.map.getCols(); c++) {
+                t = this.map.getTile(r, c).getTileDisplay();
+                drawTileDisplay(g, t, new Location(r, c));
             }
         }
+
+        for(Entity e : this.map.getEntities()) {
+            drawTileDisplay(g, e.getTile().getTileDisplay(), e.getLocation());
+        }
+    }
+
+    private void drawTileDisplay(Graphics g, TileDisplay tileDisplay, Location loc) {
+        int x = loc.col * this.charWidth;
+        int y = loc.row * this.charHeight;
+
+        g.setColor(tileDisplay.getBackgroundColor());
+        g.fillRect(x, y, this.charWidth, this.charHeight);
+        g.setColor(tileDisplay.getColor());
+        g.drawString("" + tileDisplay.getRepresentation(), x, y + this.charHeight);
     }
 }

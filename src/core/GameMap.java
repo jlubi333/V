@@ -1,17 +1,21 @@
 package core;
 
 import core.entity.Entity;
+import core.entity.Player;
 import core.tile.Tile;
 
 import java.util.List;
 
-public class GameMap<T extends Tile> implements Updatable {
-    private List<List<T>> tiles;
+public class GameMap implements Updatable {
+    private List<List<Tile>> tiles;
+    private Player player;
     private List<Entity> entities;
 
-    public GameMap(List<List<T>> tiles, List<Entity> entities) {
+    public GameMap(List<List<Tile>> tiles, Player player, List<Entity> entities) {
         this.tiles = tiles;
+        this.player = player;
         this.entities = entities;
+        this.entities.add(this.player);
     }
 
     public void update() {
@@ -22,6 +26,10 @@ public class GameMap<T extends Tile> implements Updatable {
 
     public List<Entity> getEntities() {
         return this.entities;
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 
     public int getRows() {
@@ -35,14 +43,14 @@ public class GameMap<T extends Tile> implements Updatable {
         return this.tiles.get(0).size();
     }
 
-    public T getTile(int row, int col) {
+    public Tile getTile(int row, int col) {
         if (!isInsideMap(row, col)) {
             return null;
         }
         return this.tiles.get(row).get(col);
     }
 
-    public void setTile(int row, int col, T tile) {
+    public void setTile(int row, int col, Tile tile) {
         if (!isInsideMap(row, col)) {
             return;
         }

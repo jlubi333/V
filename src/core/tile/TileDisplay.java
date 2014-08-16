@@ -2,12 +2,11 @@ package core.tile;
 
 import java.awt.*;
 
-public abstract class TextBasedTile extends Tile {
+public class TileDisplay {
     private char representation;
     private Color color, backgroundColor;
 
-    protected TextBasedTile(String name, boolean isBlocked, char representation, Color color, Color backgroundColor) {
-        super(name, isBlocked);
+    public TileDisplay(char representation, Color color, Color backgroundColor) {
         this.representation = representation;
         this.color = color;
         this.backgroundColor = backgroundColor;

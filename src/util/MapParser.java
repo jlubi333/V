@@ -9,9 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public abstract class MapParser {
-    public static <T extends Tile> List<List<T>> parseFile(String filename) throws FileNotFoundException, ClassNotFoundException {
-        List<List<T>> tiles = new ArrayList<>();
-        System.out.println(tiles);
+    public static  List<List<Tile>> parseFile(String filename) throws FileNotFoundException, ClassNotFoundException {
+        List<List<Tile>> tiles = new ArrayList<>();
 
         File file = new File(filename);
         Scanner scan = new Scanner(file);
@@ -21,7 +20,7 @@ public abstract class MapParser {
             for (String className : data) {
                 try {
                     @SuppressWarnings("unchecked")
-                    T tile = (T) Class.forName("core.tile.textTile." + className).newInstance();
+                    Tile tile = (Tile) Class.forName("core.tile.textTile." + className + "Tile").newInstance();
                     tiles.get(tiles.size() - 1).add(tile);
                 } catch (IllegalAccessException | InstantiationException e) {
                     e.printStackTrace();

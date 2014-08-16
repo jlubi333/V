@@ -1,7 +1,6 @@
 package gui.text;
 
 import core.GameMap;
-import core.tile.TextBasedTile;
 import util.GameInfo;
 
 import javax.swing.*;
@@ -10,7 +9,9 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 
 public class Gui {
-    public Gui(Font font, GameMap<TextBasedTile> map) throws FileNotFoundException, ClassNotFoundException {
+    private GamePanel gamePanel;
+
+    public Gui(Font font, GameMap map) throws FileNotFoundException, ClassNotFoundException {
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.BLACK);
 
@@ -42,10 +43,10 @@ public class Gui {
 
         mainPanel.add(sidebar);
 
-        GamePanel gamePanel = new GamePanel(font, map);
-        gamePanel.setPreferredSize(new Dimension(500, 500));
+        this.gamePanel = new GamePanel(font, map);
+        this.gamePanel.setPreferredSize(new Dimension(500, 500));
 
-        mainPanel.add(gamePanel);
+        mainPanel.add(this.gamePanel);
 
         JFrame frame = new JFrame(GameInfo.GAME_NAME);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -53,5 +54,9 @@ public class Gui {
         frame.add(mainPanel);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public GamePanel getGamePanel() {
+        return this.gamePanel;
     }
 }

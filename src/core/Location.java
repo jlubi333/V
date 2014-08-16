@@ -1,11 +1,16 @@
 package core;
 
 public class Location {
-    public int x;
-    public int y;
+    public int row;
+    public int col;
 
-    public Location(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Location(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    @Override
+    public String toString() {
+        return "Location[row=" + this.row + ", col=" + this.col + "]";
     }
 }

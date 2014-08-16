@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 
-public class KeyManager implements KeyListener {
+public class KeyDownManager implements KeyListener {
     private static HashMap<Integer, Boolean> keys = new HashMap<>();
 
     @Override
@@ -24,14 +24,5 @@ public class KeyManager implements KeyListener {
 
     public static boolean isKeyDown(int keyCode) {
         return keys.containsKey(keyCode) && keys.get(keyCode);
-    }
-
-    public static boolean popKey(int keyCode) {
-        if(isKeyDown(keyCode)) {
-            keys.put(keyCode, false);
-            return true;
-        } else {
-            return false;
-        }
     }
 }

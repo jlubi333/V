@@ -1,20 +1,28 @@
 package gui.text;
 
+import core.GameMap;
+import core.Location;
+import core.action.MoveAction;
 import util.GamePreferences;
-import util.KeyManager;
+
+import javax.swing.*;
 
 public class InputHandler {
-    private static boolean moved = false;
 
-    public static void handle() {
-        if (KeyManager.popKey(GamePreferences.UP_KEY)) {
+    public static void handle(JComponent c, GameMap map) {
+        InputMap inputMap = c.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = c.getActionMap();
 
-        } else if (KeyManager.popKey(GamePreferences.RIGHT_KEY)) {
+        inputMap.put(KeyStroke.getKeyStroke(GamePreferences.UP_KEY, 0), "up");
+        actionMap.put("up", new MoveAction(c, map.getPlayer(), new Location(-1, 0)));
 
-        } else if (KeyManager.popKey(GamePreferences.DOWN_KEY)) {
+        inputMap.put(KeyStroke.getKeyStroke(GamePreferences.RIGHT_KEY, 0), "right");
+        actionMap.put("right", new MoveAction(c, map.getPlayer(), new Location(0, 1)));
 
-        } else if (KeyManager.popKey(GamePreferences.LEFT_KEY)) {
+        inputMap.put(KeyStroke.getKeyStroke(GamePreferences.DOWN_KEY, 0), "down");
+        actionMap.put("down", new MoveAction(c, map.getPlayer(), new Location(1, 0)));
 
-        }
+        inputMap.put(KeyStroke.getKeyStroke(GamePreferences.LEFT_KEY, 0), "left");
+        actionMap.put("left", new MoveAction(c, map.getPlayer(), new Location(0, -1)));
     }
 }

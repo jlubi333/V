@@ -1,7 +1,10 @@
 package gui.text;
 
 import core.GameMap;
-import core.tile.TextBasedTile;
+import core.Location;
+import core.entity.Player;
+import core.tile.Tile;
+import core.tile.textTile.PlayerTile;
 import util.MapParser;
 
 import java.awt.*;
@@ -13,9 +16,11 @@ public class Main {
     public static void main(String[] args) {
         try {
             Font f = new Font("Courier New", Font.PLAIN, 16);
-            List<List<TextBasedTile>> tiles = MapParser.parseFile("map.jplm");
-            GameMap<TextBasedTile> map = new GameMap<>(tiles, new ArrayList<>());
+            List<List<Tile>> tiles = MapParser.parseFile("map.jplm");
+            Player player = new Player("JPL", new Location(1, 1), new PlayerTile(), null);
+            GameMap map = new GameMap(tiles, player, new ArrayList<>());
             Gui gui = new Gui(f, map);
+            InputHandler.handle(gui.getGamePanel(), map);
         } catch (FileNotFoundException | ClassNotFoundException e) {
             e.printStackTrace();
         }
