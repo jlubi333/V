@@ -65,8 +65,7 @@ public abstract class Entity implements Updatable {
     }
 
     public void move(Location displacement) {
-        this.location.row += displacement.row;
-        this.location.col += displacement.col;
+        this.location = this.location.plus(displacement);
     }
 
     public void jumpTo(Location loc) {

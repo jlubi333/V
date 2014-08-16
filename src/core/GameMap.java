@@ -16,6 +16,10 @@ public class GameMap implements Updatable {
         this.player = player;
         this.entities = entities;
         this.entities.add(this.player);
+
+        for(Entity e : this.entities) {
+            e.setMap(this);
+        }
     }
 
     public void update() {
@@ -43,21 +47,21 @@ public class GameMap implements Updatable {
         return this.tiles.get(0).size();
     }
 
-    public Tile getTile(int row, int col) {
-        if (!isInsideMap(row, col)) {
+    public Tile getTile(Location loc) {
+        if (!isInsideMap(loc)) {
             return null;
         }
-        return this.tiles.get(row).get(col);
+        return this.tiles.get(loc.row).get(loc.col);
     }
 
-    public void setTile(int row, int col, Tile tile) {
-        if (!isInsideMap(row, col)) {
+    public void setTile(Location loc, Tile tile) {
+        if (!isInsideMap(loc)) {
             return;
         }
-        this.tiles.get(row).set(col, tile);
+        this.tiles.get(loc.row).set(loc.col, tile);
     }
 
-    public boolean isInsideMap(int row, int col) {
-        return row >= 0 && row < this.getRows() && col >= 0 && col < this.getCols();
+    public boolean isInsideMap(Location loc) {
+        return loc.row >= 0 && loc.row < this.getRows() && loc.col >= 0 && loc.col < this.getCols();
     }
 }

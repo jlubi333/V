@@ -9,6 +9,10 @@ public class Location {
         this.col = col;
     }
 
+    public Location plus(Location other) {
+        return new Location(this.row + other.row, this.col + other.col);
+    }
+
     @Override
     public String toString() {
         return "Location[row=" + this.row + ", col=" + this.col + "]";

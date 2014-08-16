@@ -40,11 +40,13 @@ public class GamePanel extends JPanel {
         g.setFont(this.font);
         this.setBackground(Color.BLACK);
 
+        Location loc;
         TileDisplay t;
         for (int r = 0; r < this.map.getRows(); r++) {
             for (int c = 0; c < this.map.getCols(); c++) {
-                t = this.map.getTile(r, c).getTileDisplay();
-                drawTileDisplay(g, t, new Location(r, c));
+                loc = new Location(r, c);
+                t = this.map.getTile(loc).getTileDisplay();
+                drawTileDisplay(g, t, loc);
             }
         }
 

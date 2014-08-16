@@ -19,6 +19,9 @@ public class MoveAction extends GameAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
+        if(this.entity.getMap().getTile(this.entity.getLocation().plus(this.displacement)).isBlocked()) {
+            return;
+        }
         this.entity.move(this.displacement);
     }
 }
