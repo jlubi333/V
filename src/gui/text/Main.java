@@ -10,7 +10,6 @@ import util.MapParser;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class Main {
             GameMap map = new GameMap(tiles, player, new ArrayList<>());
             Gui gui = new Gui(f, map);
             InputHandler.handle(gui.getGamePanel(), map);
-        } catch (FileNotFoundException | ClassNotFoundException | URISyntaxException e) {
+        } catch (FileNotFoundException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

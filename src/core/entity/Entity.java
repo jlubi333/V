@@ -12,12 +12,14 @@ public abstract class Entity implements Updatable {
     private Location location;
     private Tile tile;
     private Battler battler;
+    private boolean isHostile;
 
-    protected Entity(String name, Location location, Tile tile, Battler battler) {
+    protected Entity(String name, Location location, Tile tile, Battler battler, boolean isHostile) {
         this.name = name;
         this.location = location;
         this.tile = tile;
         this.battler = battler;
+        this.isHostile = isHostile;
     }
 
     public void update() {
@@ -62,6 +64,10 @@ public abstract class Entity implements Updatable {
 
     public void setBattler(Battler battler) {
         this.battler = battler;
+    }
+
+    public boolean isHostile() {
+        return this.isHostile;
     }
 
     public void move(Location displacement) {

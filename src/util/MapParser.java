@@ -2,15 +2,13 @@ package util;
 
 import core.tile.Tile;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public abstract class MapParser {
-    public static  List<List<Tile>> parseFile(InputStream inputStream) throws FileNotFoundException, ClassNotFoundException, URISyntaxException {
+    public static  List<List<Tile>> parseFile(InputStream inputStream) throws ClassNotFoundException {
         List<List<Tile>> tiles = new ArrayList<>();
 
         Scanner scan = new Scanner(inputStream);

@@ -6,6 +6,6 @@ import core.tile.Tile;
 
 public class Player extends Entity {
     public Player(String name, Location location, Tile tile, Battler battler) {
-        super(name, location, tile, battler);
+        super(name, location, tile, battler, false);
     }
 }
