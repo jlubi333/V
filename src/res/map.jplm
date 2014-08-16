@@ -1,11 +1,12 @@
+Room 1
 Wall,Wall,Wall,Wall,Wall,Air,Air,Air,Air,Air,Air
 Wall,Floor,Floor,Floor,Wall,Wall,Wall,Air,Air,Air,Air
 Wall,Floor,Floor,Floor,Floor,Floor,Wall,Air,Air,Air,Air
 Wall,Floor,Floor,Floor,Wall,Floor,Wall,Air,Air,Air,Air
 Wall,Floor,Floor,Floor,Wall,Floor,Wall,Air,Air,Air,Air
-Wall,Floor,Floor,Floor,Wall,Floor,Wall,Air,Air,Air,Air
+Wall,Floor,Floor,Floor,Wall,Floor,Wall,Wall,Air,Air,Air
 Wall,Floor,Floor,Floor,Wall,Floor,Floor,Wall,Wall,Wall,Wall
 Wall,Floor,Floor,Floor,Wall,Floor,Floor,Floor,Floor,Floor,Wall
 Wall,Floor,Floor,Floor,Wall,Floor,Floor,Floor,Floor,Floor,Wall
 Wall,Floor,Floor,Floor,Wall,Floor,Floor,Wall,Wall,Wall,Wall
-Wall,Wall,Wall,Wall,Wall,Wall,Wall,Air,Air,Air,Air
+Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Air,Air,Air

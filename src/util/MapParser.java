@@ -2,18 +2,19 @@ package util;
 
 import core.tile.Tile;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public abstract class MapParser {
-    public static  List<List<Tile>> parseFile(String filename) throws FileNotFoundException, ClassNotFoundException {
+    public static  List<List<Tile>> parseFile(InputStream inputStream) throws FileNotFoundException, ClassNotFoundException, URISyntaxException {
         List<List<Tile>> tiles = new ArrayList<>();
 
-        File file = new File(filename);
-        Scanner scan = new Scanner(file);
+        Scanner scan = new Scanner(inputStream);
+        String mapName = scan.nextLine();
         while (scan.hasNextLine()) {
             tiles.add(new ArrayList<>());
             String[] data = scan.nextLine().split(",");
@@ -26,7 +27,8 @@ public abstract class MapParser {
                     e.printStackTrace();
                 }
                 catch (ClassNotFoundException e) {
-                    throw new ClassNotFoundException("Invalid data in file \"" + filename + "\": " + className);
+                    // TODO
+                    throw new ClassNotFoundException("Invalid data in map \"" + mapName + "\": " + className);
                 }
             }
         }
