@@ -64,4 +64,16 @@ public class GameMap implements Updatable {
     public boolean isInsideMap(Location loc) {
         return loc.row >= 0 && loc.row < this.getRows() && loc.col >= 0 && loc.col < this.getCols();
     }
+
+    public boolean isBlocked(Location loc) {
+        if(this.getTile(loc).isBlocked()) {
+            return true;
+        }
+        for(Entity e : this.getEntities()) {
+            if(e.getLocation().equals(loc) && e.getTile().isBlocked()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

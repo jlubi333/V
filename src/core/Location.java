@@ -14,6 +14,15 @@ public class Location {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if(!(other instanceof Location)) {
+            return false;
+        }
+        Location otherLocation = (Location) other;
+        return this.row == otherLocation.row && this.col == otherLocation.col;
+    }
+
+    @Override
     public String toString() {
         return "Location[row=" + this.row + ", col=" + this.col + "]";
     }

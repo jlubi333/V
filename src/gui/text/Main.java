@@ -2,8 +2,11 @@ package gui.text;
 
 import core.GameMap;
 import core.Location;
+import core.entity.Enemy;
+import core.entity.Entity;
 import core.entity.Player;
 import core.tile.Tile;
+import core.tile.textTile.EnemyTile;
 import core.tile.textTile.PlayerTile;
 import util.GameResources;
 import util.MapParser;
@@ -19,7 +22,10 @@ public class Main {
             Font f = new Font("Courier New", Font.PLAIN, 16);
             List<List<Tile>> tiles = MapParser.parseFile(GameResources.getPathToResource("map.jplm"));
             Player player = new Player("JPL", new Location(1, 1), new PlayerTile(), null);
-            GameMap map = new GameMap(tiles, player, new ArrayList<>());
+            Enemy enemy1 = new Enemy("Enemy", new Location (5, 1), new EnemyTile(), null);
+            ArrayList<Entity> entities = new ArrayList<>();
+            entities.add(enemy1);
+            GameMap map = new GameMap(tiles, player, entities);
             Gui gui = new Gui(f, map);
             InputHandler.handle(gui.getGamePanel(), map);
         } catch (FileNotFoundException | ClassNotFoundException e) {
