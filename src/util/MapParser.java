@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public abstract class MapParser {
-    public static  List<List<Tile>> parseFile(InputStream inputStream) throws ClassNotFoundException {
+    public static List<List<Tile>> parseFile(InputStream inputStream) throws ClassNotFoundException {
         List<List<Tile>> tiles = new ArrayList<>();
 
         Scanner scan = new Scanner(inputStream);
@@ -23,8 +23,7 @@ public abstract class MapParser {
                     tiles.get(tiles.size() - 1).add(tile);
                 } catch (IllegalAccessException | InstantiationException e) {
                     e.printStackTrace();
-                }
-                catch (ClassNotFoundException e) {
+                } catch (ClassNotFoundException e) {
                     throw new ClassNotFoundException("Invalid data in map \"" + mapName + "\": " + className);
                 }
             }
