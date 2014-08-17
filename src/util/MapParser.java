@@ -14,7 +14,7 @@ public abstract class MapParser {
         Scanner scan = new Scanner(inputStream);
         String mapName = scan.nextLine();
         while (scan.hasNextLine()) {
-            tiles.add(new ArrayList<>());
+            tiles.add(new ArrayList<Tile>());
             String[] data = scan.nextLine().split(",");
             for (String className : data) {
                 try {
@@ -25,7 +25,6 @@ public abstract class MapParser {
                     e.printStackTrace();
                 }
                 catch (ClassNotFoundException e) {
-                    // TODO
                     throw new ClassNotFoundException("Invalid data in map \"" + mapName + "\": " + className);
                 }
             }

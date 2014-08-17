@@ -1,5 +1,6 @@
 package gui.text;
 
+import core.Direction;
 import core.GameMap;
 import core.Location;
 import core.entity.Enemy;
@@ -21,8 +22,8 @@ public class Main {
         try {
             Font f = new Font("Courier New", Font.PLAIN, 16);
             List<List<Tile>> tiles = MapParser.parseFile(GameResources.getPathToResource("map.jplm"));
-            Player player = new Player("JPL", new Location(1, 1), new PlayerTile(), null);
-            Enemy enemy1 = new Enemy("Enemy", new Location (5, 1), new EnemyTile(), null);
+            Player player = new Player("JPL", new Location(1, 1), new PlayerTile(), Direction.UP, null);
+            Enemy enemy1 = new Enemy("Enemy", new Location (5, 1), new EnemyTile(), Direction.UP, null);
             ArrayList<Entity> entities = new ArrayList<>();
             entities.add(enemy1);
             GameMap map = new GameMap(tiles, player, entities);

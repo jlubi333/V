@@ -1,5 +1,6 @@
 package core.entity;
 
+import core.Direction;
 import core.GameMap;
 import core.Location;
 import core.Updatable;
@@ -11,19 +12,25 @@ public abstract class Entity implements Updatable {
     private GameMap map;
     private Location location;
     private Tile tile;
+    private Direction direction;
     private Battler battler;
     private boolean isHostile;
 
-    protected Entity(String name, Location location, Tile tile, Battler battler, boolean isHostile) {
+    protected Entity(String name, Location location, Tile tile, Direction direction, Battler battler, boolean isHostile) {
         this.name = name;
         this.location = location;
         this.tile = tile;
+        this.direction = direction;
         this.battler = battler;
         this.isHostile = isHostile;
     }
 
     public void update() {
 
+    }
+
+    public void onInspect(Entity sender) {
+        System.out.println(this.name);
     }
 
     public String getName() {
@@ -58,6 +65,14 @@ public abstract class Entity implements Updatable {
         this.tile = tile;
     }
 
+    public Direction getDirection() {
+        return this.direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
     public Battler getBattler() {
         return this.battler;
     }
@@ -70,11 +85,23 @@ public abstract class Entity implements Updatable {
         return this.isHostile;
     }
 
-    public void move(Location displacement) {
-        this.location = this.location.plus(displacement);
+    public void move(Direction d) {
+        this.location = this.location.plus(Direction.getDisplacementLocation(d));
     }
 
     public void jumpTo(Location loc) {
         this.location = loc;
+    }
+
+    public void inspect() {
+        this.inspect(this.getDirection());
+    }
+
+    public void inspect(Direction d) {
+        Location locToInspect = this.getLocation().plus(Direction.getDisplacementLocation(d));
+        Entity e = this.getMap().getEntityAtLocation(locToInspect);
+        if(e != null) {
+            e.onInspect(this);
+        }
     }
 }
